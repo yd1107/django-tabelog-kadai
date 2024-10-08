@@ -7,8 +7,8 @@ from django.db import models
 
 class Category(models.Model):
     """カテゴリーモデル"""
-    name = models.CharField(verbose_name='カテゴリー名'
-    photo = models.ImageField(verbose_name='写真', max_length=64), blank=True, null=True)
+    name = models.CharField(verbose_name='カテゴリー名', max_length=64)
+    photo = models.ImageField(verbose_name='写真', blank=True, null=True)
     
     class Meta:
         verbose_name_plural = 'Category'
@@ -43,7 +43,7 @@ on_delete=models.PROTECT)
 
 class Reservation(models.Model):
     """予約モデル"""
-    TIMES = (
+TIMES = (
         ('','選択してください'), (datetime.time(2, 3), '2:30'),
         (datetime.time(3, 0), '3:00'), (datetime.time(3, 30), '3:30'),(datetime.time(4, 0), '4:00'),
         (datetime.time(4, 30), '4:30'),
@@ -94,7 +94,7 @@ class Review(models.Model):
 class Favorite(models.Model):
     """お気に入りモデル"""
     user = models.ForeignKey(CustomUser, verbose_name='ユーザー',on_delete=models.PROTECT, null=True, blank=True)
-    restaurant = models.ForeignKey(Restaurant, verbose_name='レストラン'on_delete=models.PROTECT)
+    restaurant = models.ForeignKey(Restaurant, verbose_name='レストラン',on_delete=models.PROTECT)
     created_at = models.DateTimeField(verbose_name='お気に入り登録日時',auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='お気に入り更新日時',auto_now=True)
     
