@@ -31,7 +31,7 @@
       <div class="container nagoyameshi-container">
         <h2 class="mb-3">キーワードから探す</h2>
           {#TODO:1#}
-            <form method="GET" action="#" class="user-search-box">
+            <form method="GET" action="{% url 'restaurant_list' %}" class="user-search-box">
               {# <form method="GET" action="{% url 'restaurant_list' %}" class="user-search-box"> #}
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="店舗名・エリア・カテゴリ" name="keyword">
@@ -50,7 +50,7 @@
         {# {% for restaurant,rate,rate_star in restaurant_list %} #}
           <div class="col">
             {#TODO:2#}
-              <a href="#" class="link-dark card-link">
+              <a href=" {% url 'restaurant_detail' restaurant.id %}" class="link-dark card-link">
                 {# <a href="{% url 'restaurant_detail' restaurant.id %}" class="link-dark card-link"> #}
                     <div class="card h-100">
                       {% if restaurant.photo %}
@@ -83,7 +83,7 @@
         {% if forloop.counter < 7 %}
           <div class="col">
               {#TODO:3#}
-            <a href="#" {# <a href="{% url 'restaurant_list' %}?category={{ category.name }}&button_type=category" #} class="card-link">
+            <a href="{% url 'restaurant_list' %}?category={{ category.name }}&button_type=category %}" {# <a href="{% url 'restaurant_list' %}?category={{ category.name }}&button_type=category" #} class="card-link">
               <div class="card text-white">
                 {% if category.photo %}
                   <img src="{{ category.photo.url }} " class="card-img vertical-card-image" alt="{{ category.name }}">
@@ -91,7 +91,7 @@
                       <div class="card-img-overlay d-flex justify-content-center align-items-center overlay-background">
                         <h3 class="card-title category-name">{{ category.name }}</h3>
                       </div>
-              </div>
+                </div>
             </a>
           </div>
         {% endif %}
@@ -111,7 +111,7 @@
           {% for new_restaurant in new_restaurant_list %}
             <div class="col">
               {#TODO:5#}
-                <a href="#" class="link-dark card-link">
+                <a href="{% url 'restaurant_detail' new_restaurant.id %}" class="link-dark card-link">
                   {# <a href="{% url 'restaurant_detail' new_restaurant.id %}" class="link-dark card-link"> #}
                   <div class="card h-100">
                     {% if new_restaurant.photo %}
